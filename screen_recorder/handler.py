@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from screen_recorder.entities import Device, Size
 import os
 import pathlib
+import re
 import time
 from screen_recorder import utils
 
@@ -168,9 +169,9 @@ class AndroidDeviceHandler(DeviceHandler):
         adb = self._adb() + '/platform-tools/adb'
         command = [adb, '-s', device.name, 'shell', 'wm', 'size']
         output, _ = utils.run_command(command)
-        return self._parse_available_sizes(output)
+        return self._parse_available_sizes(output, fractions)
 
-    def _parse_available_sizes(self, output):
+    def _parse_available_sizes(self, output, fractions):
         height, width = re.findall('\d+', output)
         size = Size(width=int(width), height=int(height))
         sizes = list(map(lambda fraction: size.scale(factor=fraction), fractions))

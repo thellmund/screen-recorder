@@ -10,7 +10,7 @@ with open('README.md') as f:
 
 setup(
     name = 'screen_recorder',
-    version = '0.8.2',
+    version = '0.9.1',
     description = "Record Android & iOS screens as GIFs from the command line",
     long_description = readme,
     long_description_content_type = "text/markdown",
