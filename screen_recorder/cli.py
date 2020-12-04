@@ -25,7 +25,7 @@ def select_device(devices):
     else:
         device_names = [device.name for device in devices]
         selected_name = enquiries.choose('Choose a device:', device_names)
-        print(f'📱 Selected {device.name}')
+        print(f'📱 Selected {selected_name}')
         selected_index = device_names.index(selected_name)
         return devices[selected_index]
 

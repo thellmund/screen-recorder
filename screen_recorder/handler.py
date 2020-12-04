@@ -122,13 +122,13 @@ class iOSDeviceHandler(DeviceHandler):
         width_lines = list(filter(lambda x: 'Default width' in x, lines))
         height_lines = list(filter(lambda x: 'Default height' in x, lines))
 
-        if not width_line or not height_line:
+        if not width_lines or not height_lines:
             return []
         
-        width = int(width_lines[0].split(': ')[1])
-        height = int(height_lines[0].split(': ')[1])
+        width = re.findall('\d+', width_lines[0])[0]
+        height = re.findall('\d+', height_lines[0])[0]
 
-        size = Size(width=width, height=height)
+        size = Size(width=int(width), height=int(height))
         sizes = list(map(lambda fraction: size.scale(factor=fraction), fractions))
         return sizes
 
