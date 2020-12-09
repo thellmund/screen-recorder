@@ -8,7 +8,7 @@ Screen Recorder requires Python 3 or later.
 
 #### Installation
 
-Install Screen Recorder via PyPI:
+Install Screen Recorder [via PyPI](https://pypi.org/project/screen-recorder/):
 
 ```bash
 pip install screen-recorder
